@@ -1,9 +1,6 @@
 package hibernate_test.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Author irkin
@@ -15,6 +12,7 @@ public class Employee {
 
     @Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")
@@ -40,13 +38,12 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employee " +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", department='" + department + '\'' +
-                ", salary=" + salary +
-                '}';
+                ", salary=" + salary ;
     }
 
     public int getId() {

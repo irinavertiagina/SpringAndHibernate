@@ -8,24 +8,25 @@ import org.hibernate.cfg.Configuration;
 /**
  * Author irkin
  **/
-public class test1 { // save 1 employee
+public class test2 { //get 1 employee
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
                 .buildSessionFactory();
         try {
-            Employee emp1 = new Employee("Higgs", "Mehov", "check", 650);
+            Session session = factory.getCurrentSession();//start tr
+            session.beginTransaction();//start tr
 
-            Session session = factory.getCurrentSession();//start transaction
-            session.beginTransaction();//start transaction
-            session.save(emp1);//working code
+            Employee emp1 = session.get(Employee.class, 2);//working code
+
             session.getTransaction().commit();//close transaction
-            System.out.println(emp1);//for testing purposes
 
+            System.out.println("Done!");//for testing purposes!
+            System.out.println(emp1);
         } finally{
             factory.close();
-         }
+        }
 
 
 
