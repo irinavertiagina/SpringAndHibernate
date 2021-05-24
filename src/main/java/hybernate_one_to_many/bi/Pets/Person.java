@@ -13,13 +13,13 @@ public class Person {
 
     @Column(name = "id")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Pet> petList = new ArrayList<>();
 
 

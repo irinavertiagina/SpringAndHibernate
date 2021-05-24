@@ -20,19 +20,15 @@ public class test1 { // save 1 employee
             Session session = factory.getCurrentSession();//start transaction
             session.beginTransaction();//start transaction
 
+//           Department it = new Department("it", 200, 300);
+//           Employee higgs = new Employee("Higgs", "Vertiahin", 300);
+//           Employee irina = new Employee("Irina", "Ver", 200);
+//           it.addNewEmployee(higgs);
+//           it.addNewEmployee(irina);
+ //          session.save(it);
 
-
-           Department it = new Department("it", 200, 300);
-
-           Employee higgs = new Employee("Higgs", "Vertiahin", 300);
-           Employee irina = new Employee("Irina", "Ver", 200);
-
-         it.addNewEmployee(higgs);
-         it.addNewEmployee(irina);
-
-
-           session.save(it);
-
+Department department = session.get(Department.class, 4);
+            System.out.println(department.getEmployeeList());
 
             session.getTransaction().commit();//close transaction
             System.out.println("Done!");
